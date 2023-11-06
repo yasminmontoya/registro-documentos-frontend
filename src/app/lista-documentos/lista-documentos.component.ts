@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Documento } from '../documento';
+import { DocumentoService } from '../documento.service';
 
 @Component({
   selector: 'app-lista-documentos',
@@ -9,27 +10,17 @@ import { Documento } from '../documento';
 export class ListaDocumentosComponent {
   documentos: Documento[];
 
-  constructor() {
+  constructor(private documentoServicio:DocumentoService) {
   }
 
   ngOnInit(): void {
-    this.documentos = [{
-      "id": 1,
-      "nombre" : "INSTRUCTIVO DE DESARROLLO",
-      "codigo": "INS-ING-1",
-      "contenido": "CONTENIDO 1",
-      "tipo_id": "Instructivo",
-      "proceso_id": "Ingenieria"
-    },
-    {
-      "id": 2,
-      "nombre" : "INSTRUCTIVO DE DESARROLLO",
-      "codigo": "INS-ING-2",
-      "contenido": "CONTENIDO 2",
-      "tipo_id": "Instructivo",
-      "proceso_id": "Ingenieria"
-    },
-  ];
+    this.obtenerDocumentos();
+  }
+
+  private obtenerDocumentos(){
+    this.documentoServicio.obtenerListaDeDocumentos().subscribe(dato => {
+      this.documentos = dato;
+    });
   }
 
 }
