@@ -17,4 +17,9 @@ export class DocumentoService {
   obtenerListaDeDocumentos():Observable<Documento[]>{
     return this.httpClient.get<Documento[]>(`${this.baseURL}`);
   }
+
+  //este metodo nos sirve para registrar un documento
+  registrarDocumento(documento:Documento) : Observable<Object>{
+    return this.httpClient.post(`${this.baseURL}`,documento);
+  }
 }
