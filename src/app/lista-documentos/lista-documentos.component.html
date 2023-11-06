@@ -1,0 +1,23 @@
+<h2>Lista documentos</h2>
+<table class="table table-striped">
+  <thead class="table-dark">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Tipo</th>
+      <th>Proceso</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor= "let documento of documentos">
+      <td>{{documento.id}}</td>
+      <td>{{documento.nombre}}</td>
+      <td>{{documento.codigo}}</td>
+      <td>{{documento.tipo_id}}</td>
+      <td>{{documento.proceso_id}}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
