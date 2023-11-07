@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProcesoService {
 
-  //Esta URL obtiene el listado de todos los tipos en el backend
+  //Esta URL obtiene el listado de todos los procesos en el backend
   private baseURL = "https://yasminmontoya-registro-documentos.up.railway.app/api/procesos";
 
   constructor(private httpClient : HttpClient) { }
 
-  //este metodo nos sirve para obtener los tipos
+  //este metodo nos sirve para obtener los procesos
   obtenerListaDeProcesos():Observable<Proceso[]>{
     return this.httpClient.get<Proceso[]>(`${this.baseURL}`);
   }
