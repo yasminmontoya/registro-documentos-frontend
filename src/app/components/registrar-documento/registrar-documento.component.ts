@@ -3,6 +3,10 @@ import { Documento } from '../../models/documento';
 import { DocumentoService } from '../../services/documento.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { Tipo } from 'src/app/models/tipo';
+import { TipoService } from 'src/app/services/tipo.service';
+import { Proceso } from 'src/app/models/proceso';
+import { ProcesoService } from 'src/app/services/proceso.service';
 
 @Component({
   selector: 'app-registrar-documento',
@@ -11,8 +15,15 @@ import swal from 'sweetalert2';
 })
 export class RegistrarDocumentoComponent {
   documento: Documento = new Documento();
+  tipos: Tipo[];
+  procesos: Proceso[];
 
-  constructor(private documentoServicio:DocumentoService, private router:Router) {
+  constructor(private documentoServicio:DocumentoService, private tipoServicio:TipoService, private procesoServicio:ProcesoService, private router:Router) {
+  }
+
+  ngOnInit(): void {
+    this.obtenerTipos();
+    this.obtenerProcesos();
   }
 
   guardarDocumento(){
@@ -29,5 +40,17 @@ export class RegistrarDocumentoComponent {
 
   onSubmit(){
     this.guardarDocumento();
+  }
+
+  private obtenerTipos(){
+    this.tipoServicio.obtenerListaDeTipos().subscribe(dato => {
+      this.tipos = dato;
+    });
+  }
+
+  private obtenerProcesos(){
+    this.procesoServicio.obtenerListaDeProcesos().subscribe(dato => {
+      this.procesos = dato;
+    });
   }
 }

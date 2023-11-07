@@ -35,11 +35,19 @@
     </div>
     <div class="form-group">
       <label>Tipo:</label>
-      <input type="text" class="form-control" id="tipo_id" [(ngModel)] = "documento.tipo_id" name="tipo_id">
+      <select class="form-control" id="tipo_id" [(ngModel)] = "documento.tipo_id" name="tipo_id" required #tipo_id = "ngModel">
+        <ng-container *ngFor="let tipo of tipos">
+          <option value="{{tipo.id}}">{{tipo.nombre}}</option>
+        </ng-container>
+      </select>
     </div>
     <div class="form-group">
       <label>Proceso:</label>
-      <input type="text" class="form-control" id="proceso_id" [(ngModel)] = "documento.proceso_id" name="proceso_id">
+      <select class="form-control" id="proceso_id" [(ngModel)] = "documento.proceso_id" name="proceso_id" required #proceso_id = "ngModel">
+        <ng-container *ngFor="let proceso of procesos">
+          <option value="{{proceso.id}}">{{proceso.nombre}}</option>
+        </ng-container>
+      </select>
     </div>
 
     <button class="btn btn-success" [disabled]= "!documentoForm.form.valid">Guardar</button>
