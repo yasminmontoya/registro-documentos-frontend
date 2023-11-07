@@ -14,7 +14,7 @@ export class TipoService {
   constructor(private httpClient : HttpClient) { }
 
   //este metodo nos sirve para obtener los tipos
-  obtenerListaDeProcesos():Observable<Tipo[]>{
+  obtenerListaDeTipos():Observable<Tipo[]>{
     return this.httpClient.get<Tipo[]>(`${this.baseURL}`);
   }
 }
