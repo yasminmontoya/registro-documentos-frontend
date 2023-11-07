@@ -23,18 +23,18 @@ export class DocumentoService {
     return this.httpClient.post(`${this.baseURL}`,documento);
   }
 
-    //este metodo nos sirve para obtener o buscar un documento
-    obtenerDocumentoPorId(id:number) : Observable<Object>{
-      return this.httpClient.get<Documento[]>(`${this.baseURL}/${id}`);
-    }
+  //este metodo nos sirve para obtener o buscar un documento
+  obtenerDocumentoPorId(id:number) : Observable<Object>{
+    return this.httpClient.get<Documento[]>(`${this.baseURL}/${id}`);
+  }
 
-    //este metodo nos sirve para actualizar un documento
-    actualizarDocumento(id:number,documento:Documento) : Observable<Object>{
-      return this.httpClient.put(`${this.baseURL}/${id}`,documento);
-    }
+  //este metodo nos sirve para actualizar un documento
+  actualizarDocumento(id:number,documento:Documento) : Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}/${id}`,documento);
+  }
 
-    //este metodo nos sirve para eliminar un documento
-    eliminarDocumento(id:number) : Observable<Object>{
-      return this.httpClient.delete(`${this.baseURL}/${id}`);
-    }
+  //este metodo nos sirve para eliminar un documento
+  eliminarDocumento(id:number) : Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL}/${id}`);
+  }
 }
