@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DetalleDocumentoComponent {
   id:number;
-  documento:Documento;
+  documento:any;
 
   constructor(private documentoServicio:DocumentoService, private route:ActivatedRoute) {
   }
@@ -19,8 +19,7 @@ export class DetalleDocumentoComponent {
     this.id = this.route.snapshot.params['id'];
     this.documento = new Documento();
     this.documentoServicio.obtenerDocumentoPorId(this.id).subscribe(dato => {
-      //this.documento = dato;
-      console.log(dato);
+      this.documento = dato;
     });
   }
 }

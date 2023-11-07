@@ -10,13 +10,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ActualizarDocumentoComponent {
   id:number;
-  documento:Documento = new Documento();
+  documento:any;
   constructor(private documentoService:DocumentoService,private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
+    this.documento = new Documento();
     this.documentoService.obtenerDocumentoPorId(this.id).subscribe(dato =>{
-      //this.documento = dato;
+      this.documento = dato;
     },error => console.log(error));
   }
 
