@@ -7,14 +7,16 @@ import { ListaDocumentosComponent } from './lista-documentos/lista-documentos.co
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrarDocumentoComponent } from './registrar-documento/registrar-documento.component';
 import { FormsModule } from '@angular/forms';
-import { ActualizarEmpleadoComponent } from './actualizar-empleado/actualizar-empleado.component';
+import { DetalleDocumentoComponent } from './detalle-documento/detalle-documento.component';
+import { ActualizarDocumentoComponent } from './actualizar-documento/actualizar-documento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaDocumentosComponent,
     RegistrarDocumentoComponent,
-    ActualizarEmpleadoComponent
+    DetalleDocumentoComponent,
+    ActualizarDocumentoComponent
   ],
   imports: [
     BrowserModule,
