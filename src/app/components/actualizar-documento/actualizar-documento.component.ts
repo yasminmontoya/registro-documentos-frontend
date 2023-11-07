@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DocumentoService } from '../documento.service';
-import { Documento } from '../documento';
+import { DocumentoService } from '../../services/documento.service';
+import { Documento } from '../../models/documento';
 import { ActivatedRoute, Router } from '@angular/router';
 import swal from 'sweetalert2';
 

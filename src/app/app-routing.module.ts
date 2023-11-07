@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListaDocumentosComponent } from './lista-documentos/lista-documentos.component';
-import { RegistrarDocumentoComponent } from './registrar-documento/registrar-documento.component';
-import { ActualizarDocumentoComponent } from './actualizar-documento/actualizar-documento.component';
-import { DetalleDocumentoComponent } from './detalle-documento/detalle-documento.component';
+import { ListaDocumentosComponent } from './components/lista-documentos/lista-documentos.component';
+import { RegistrarDocumentoComponent } from './components/registrar-documento/registrar-documento.component';
+import { ActualizarDocumentoComponent } from './components/actualizar-documento/actualizar-documento.component';
+import { DetalleDocumentoComponent } from './components/detalle-documento/detalle-documento.component';
 
 const routes: Routes = [
     {path: 'documentos', component:ListaDocumentosComponent},
