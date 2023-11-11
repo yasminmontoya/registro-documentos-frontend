@@ -1,17 +1,41 @@
 <div class="col-md-6 offset-md-3">
   <h3 class="text-center">Edición de documento</h3>
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()" #documentoForm = "ngForm">
     <div class="form-group">
       <label>Nombre:</label>
-      <input type="text" class="form-control" id="nombre" [(ngModel)] = "documento.nombre" name="nombre">
+      <input type="text" class="form-control" id="nombre" [(ngModel)] = "documento.nombre" name="nombre"
+      required placeholder="Digite el nombre" minlength="4" maxlength="60" #nombre = "ngModel">
+      <div class="alert alert-danger" *ngIf= "nombre.invalid && (nombre.dirty || nombre.touched)">
+        <div *ngIf = "nombre.errors?.['required']">
+          Digite el nombre por favor
+        </div>
+        <div *ngIf = "nombre.errors?.['minlength']">
+          El nombre tiene que contener como minimo 4 caracteres
+        </div>
+        <div *ngIf = "nombre.errors?.['maxlength']">
+          El nombre tiene que tener como maximo 10 caracteres
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label>Contenido:</label>
-      <input type="text" class="form-control" id="contenido" [(ngModel)] = "documento.contenido" name="contenido">
+      <input type="text" class="form-control" id="contenido" [(ngModel)] = "documento.contenido" name="contenido"
+      required placeholder="Digite el contenido" minlength="4" maxlength="4000" #contenido = "ngModel">
+      <div class="alert alert-danger" *ngIf= "contenido.invalid && (contenido.dirty || contenido.touched)">
+        <div *ngIf = "contenido.errors?.['required']">
+          Digite el contenido por favor
+        </div>
+        <div *ngIf = "contenido.errors?.['minlength']">
+          El contenido tiene que contener como minimo 4 caracteres
+        </div>
+        <div *ngIf = "contenido.errors?.['maxlength']">
+          El contenido tiene que tener como maximo 10 caracteres
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label>Tipo:</label>
-      <select class="form-control" id="tipo_id" [(ngModel)]="documento.tipo_id" name="tipo_id">
+      <select class="form-control" id="tipo_id" [(ngModel)] = "documento.tipo_id" name="tipo_id">
         <ng-container *ngFor="let tipo of tipos">
           <option value="{{ tipo.id }}">{{ tipo.nombre }}</option>
         </ng-container>
@@ -19,13 +43,13 @@
     </div>
     <div class="form-group">
       <label>Proceso:</label>
-      <select class="form-control" id="proceso_id" [(ngModel)]="documento.proceso_id" name="proceso_id">
+      <select class="form-control" id="proceso_id" [(ngModel)] = "documento.proceso_id" name="proceso_id">
         <ng-container *ngFor="let proceso of procesos">
           <option value="{{ proceso.id }}">{{ proceso.nombre }}</option>
         </ng-container>
       </select>
     </div>
 
-    <button class="btn btn-success">Guardar</button>
+    <button class="btn btn-success" [disabled]= "!documentoForm.form.valid">Guardar</button>
   </form>
 </div>
