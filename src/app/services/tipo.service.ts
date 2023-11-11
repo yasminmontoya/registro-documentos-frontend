@@ -17,4 +17,10 @@ export class TipoService {
   obtenerListaDeTipos():Observable<Tipo[]>{
     return this.httpClient.get<Tipo[]>(`${this.baseURL}`);
   }
+
+  //este metodo nos sirve para obtener o buscar un tipo
+  obtenerTipoPorId(id:number) : Observable<Object>{
+    return this.httpClient.get<Tipo[]>(`${this.baseURL}/${id}`);
+  }
+
 }

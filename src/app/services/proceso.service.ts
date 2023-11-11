@@ -17,4 +17,10 @@ export class ProcesoService {
   obtenerListaDeProcesos():Observable<Proceso[]>{
     return this.httpClient.get<Proceso[]>(`${this.baseURL}`);
   }
+
+  //este metodo nos sirve para obtener o buscar un tipo
+  obtenerProcesoPorId(id:number) : Observable<Object>{
+    return this.httpClient.get<Proceso[]>(`${this.baseURL}/${id}`);
+  }
+  
 }
