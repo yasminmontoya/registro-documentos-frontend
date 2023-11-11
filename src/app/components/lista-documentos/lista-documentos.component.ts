@@ -3,6 +3,10 @@ import { Documento } from '../../models/documento';
 import { DocumentoService } from '../../services/documento.service';
 import { Router } from '@angular/router';
 import swal from 'sweetalert2';
+import { TipoService } from 'src/app/services/tipo.service';
+import { Tipo } from 'src/app/models/tipo';
+import { Proceso } from 'src/app/models/proceso';
+import { ProcesoService } from 'src/app/services/proceso.service';
 
 @Component({
   selector: 'app-lista-documentos',
@@ -11,17 +15,33 @@ import swal from 'sweetalert2';
 })
 export class ListaDocumentosComponent {
   documentos: Documento[];
+  tipos: Tipo[];
+  procesos: Proceso[];
 
-  constructor(private documentoServicio:DocumentoService, private router:Router) {
+  constructor(private documentoServicio:DocumentoService, private tipoServicio:TipoService, private procesoServicio:ProcesoService, private router:Router) {
   }
 
   ngOnInit(): void {
     this.obtenerDocumentos();
+    this.obtenerTipos();
+    this.obtenerProcesos();
   }
 
   private obtenerDocumentos(){
     this.documentoServicio.obtenerListaDeDocumentos().subscribe(dato => {
       this.documentos = dato;
+    });
+  }
+
+  private obtenerTipos(){
+    this.tipoServicio.obtenerListaDeTipos().subscribe(dato => {
+      this.tipos = dato;
+    });
+  }
+
+  private obtenerProcesos(){
+    this.procesoServicio.obtenerListaDeProcesos().subscribe(dato => {
+      this.procesos = dato;
     });
   }
 

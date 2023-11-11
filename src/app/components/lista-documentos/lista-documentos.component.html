@@ -15,8 +15,12 @@
       <td>{{documento.id}}</td>
       <td>{{documento.nombre}}</td>
       <td>{{documento.codigo}}</td>
-      <td>{{documento.tipo_id}}</td>
-      <td>{{documento.proceso_id}}</td>
+      <ng-container *ngFor= "let tipo of tipos">
+        <td *ngIf="documento.tipo_id == tipo.id">{{ tipo.nombre }}</td>
+      </ng-container>
+      <ng-container *ngFor= "let proceso of procesos">
+        <td *ngIf="documento.proceso_id == proceso.id">{{ proceso.nombre }}</td>
+      </ng-container>
       <td>
         <button (click)="actualizarDocumento(documento.id)" class="btn btn-info">Editar</button>
         <button (click)="eliminarDocumento(documento.id)" class="btn btn-danger ml-2">Eliminar</button>
