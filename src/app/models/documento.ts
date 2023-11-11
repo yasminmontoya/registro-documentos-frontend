@@ -3,6 +3,6 @@ export class Documento {
   nombre:string;
   codigo:string;
   contenido:string;
-  tipo_id:string;
-  proceso_id:string;
+  tipo_id:number;
+  proceso_id:number;
 }
