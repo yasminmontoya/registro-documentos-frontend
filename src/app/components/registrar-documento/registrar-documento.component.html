@@ -19,8 +19,8 @@
     </div>
     <div class="form-group">
       <label>Contenido:</label>
-      <input type="text" class="form-control" id="contenido" [(ngModel)] = "documento.contenido" name="contenido"
-      required placeholder="Digite el contenido" minlength="4" maxlength="4000" #contenido = "ngModel">
+      <textarea class="form-control" id="contenido" rows="5" [(ngModel)] = "documento.contenido" name="contenido"
+      required placeholder="Digite el contenido" minlength="4" maxlength="4000" #contenido = "ngModel"></textarea>
       <div class="alert alert-danger" *ngIf= "contenido.invalid && (contenido.dirty || contenido.touched)">
         <div *ngIf = "contenido.errors?.['required']">
           Digite el contenido por favor
